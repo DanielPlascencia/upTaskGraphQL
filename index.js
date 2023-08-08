@@ -3,10 +3,15 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config("variables.env");
 const typeDefs = require("./db/schema");
 const resolvers = require("./db/resolvers");
+const express = require("express");
+const cors = require("cors");
 
 const conectarDB = require("./config/db");
 
 conectarDB();
+
+const app = express();
+app.use(cors());
 
 const server = new ApolloServer({
   typeDefs,
